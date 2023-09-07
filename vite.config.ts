@@ -12,6 +12,7 @@ export default defineConfig({
       "@models": path.resolve(__dirname, './src/models'),
       "@store": path.resolve(__dirname, './src/store'),
       "@api": path.resolve(__dirname, './src/api'),
+      "@styles": path.resolve(__dirname, './src/styles'),
     },
   },
 });

@@ -10,6 +10,7 @@ export default {
         gray: {
           200: "#ebebeb",
           300: "#d3d3d3",
+          700: "#0000008a"
         },
       },
       spacing: {

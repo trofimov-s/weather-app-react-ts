@@ -1,5 +1,7 @@
+@import '@styles/variables';
+
 .header {
-  @apply h-17.5;
+  height: $header-height;
   @apply flex justify-between items-center;
 
   .title {

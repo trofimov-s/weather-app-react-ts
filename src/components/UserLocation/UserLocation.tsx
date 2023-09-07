@@ -15,7 +15,7 @@ const UserLocation: FC = () => {
   return (
     <div>
       <div className="flex">
-        <Icon fontSize='18px' icon='person_pin_circle' />
+        <Icon fontSize="18px" icon="person_pin_circle" />
         <span>Location:</span>
       </div>
       <div className="flex items-center gap-x-2">

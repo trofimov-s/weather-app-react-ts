@@ -3,10 +3,9 @@ import './Header.scss';
 import UserLocation from '@components/UserLocation/UserLocation';
 
 const Header: FC = () => {
-
   return (
-    <header className='header'>
-      <h1 className='title'>Weather Forecast</h1>
+    <header className="header">
+      <h1 className="title">Weather Forecast</h1>
       <UserLocation />
     </header>
   );

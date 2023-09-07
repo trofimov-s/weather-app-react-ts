@@ -1,0 +1,15 @@
+@import '@styles/variables';
+
+.footer {
+  height: $footer-height;
+  @apply text-gray-700;
+  @apply flex justify-center items-center;
+
+  .social-link {
+    @apply text-gray-700;
+
+    &:hover {
+      @apply underline;
+    }
+  }
+}

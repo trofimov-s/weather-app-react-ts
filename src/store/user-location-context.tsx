@@ -11,7 +11,7 @@ const UserLocationContextProvider: FC<PropsWithChildren> = ({ children }) => {
   console.log('context');
 
   useEffect(() => {
-      api.getUserLocation().then((res) => setUserLocation(res))
+    api.getUserLocation().then((res) => setUserLocation(res));
   }, []);
 
   return (
