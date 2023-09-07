@@ -1,15 +1,23 @@
 import './App.scss';
-import Footer from '@components/Footer';
-import Header from '@components/Header';
+import Footer from '@components/Footer/Footer';
+import Header from '@components/Header/Header';
+import Main from '@components/Main/Main';
+import { Container } from '@components/UI';
 
 function App() {
   return (
     <>
-      <Header />
+      <Container>
+        <Header />
+      </Container>
       <div className="divider"></div>
-      <main className="container"></main>
+      <Container>
+        <Main />
+      </Container>
       <div className="divider"></div>
-      <Footer />
+      <Container>
+        <Footer />
+      </Container>
     </>
   );
 }

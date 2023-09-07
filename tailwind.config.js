@@ -8,9 +8,13 @@ export default {
     extend: {
       colors: {
         gray: {
+          200: "#ebebeb",
           300: "#d3d3d3",
         },
       },
+      spacing: {
+        '17.5': '4.375rem', // 70px
+      }
     },
   },
   plugins: [],

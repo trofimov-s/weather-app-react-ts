@@ -1,0 +1,8 @@
+.header {
+  @apply h-17.5;
+  @apply flex justify-between items-center;
+
+  .title {
+    @apply text-3xl;
+  }
+}
