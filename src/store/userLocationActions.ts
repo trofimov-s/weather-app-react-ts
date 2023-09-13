@@ -7,9 +7,13 @@ const api = UserLocationApi;
 
 export const getUserLocationAction = createAsyncThunk<UserLocationData>(
   'userLocation/getUserLocation',
-  async (_, { dispatch }) =>
-    api.getUserLocation().then((location: UserLocationData) => {
+  async (_, { dispatch }) => {
+    try {
+      const location = await api.getUserLocation();
       dispatch(ForecastActions.init(location.city.toLowerCase()));
       return location;
-    }),
+    } catch (error) {
+      dispatch(ForecastActions.init(null));
+    }
+  },
 );

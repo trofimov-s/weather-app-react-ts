@@ -9,9 +9,10 @@ import { ForecastSelectors } from '@store/forecastSelectors';
 
 type Props = {
   error: string;
+  forecastStateIsEmpty: boolean;
 };
 
-const ForecastPreview: FC<Props> = ({ error }) => {
+const ForecastPreview: FC<Props> = ({ error, forecastStateIsEmpty }) => {
   const isLoading = useAppSelector(ForecastSelectors.selectLoading);
   const dayForecastList = useAppSelector(ForecastSelectors.selectForecastDay);
   const [selectedTimeIndex, setSelectedTimeIndex] = useState(0);
@@ -28,6 +29,11 @@ const ForecastPreview: FC<Props> = ({ error }) => {
 
   if (error) {
     return <h3 className="error-msg">{error}</h3>;
+  }
+
+  console.log(forecastStateIsEmpty)
+  if (forecastStateIsEmpty && !isLoading) {
+    return <p className='fallback'>Welcome! Start to search city forecast!</p>
   }
 
   return (

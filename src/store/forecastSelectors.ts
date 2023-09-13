@@ -45,6 +45,7 @@ const selectLoading = (state: RootState): boolean =>
   state.forecast.isLoading || state.forecast.isLoadingBatchUpdating;
 const selectBatchLoading = (state: RootState): boolean => state.forecast.isLoadingBatchUpdating;
 const selectError = (state: RootState): string => state.forecast.error;
+const forecastStateIsEmpty = (state: RootState): boolean => !Object.keys(state.forecast.forecast).length
 
 export const ForecastSelectors = {
   selectCurrentUnit,
@@ -56,4 +57,5 @@ export const ForecastSelectors = {
   selectLoading,
   selectError,
   selectBatchLoading,
+  forecastStateIsEmpty
 };

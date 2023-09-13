@@ -8,13 +8,14 @@ import Favorite from '@components/Favorite/Favorite';
 
 const Forecast: FC = () => {
   const error = useAppSelector(ForecastSelectors.selectError);
+  const forecastStateIsEmpty = useAppSelector(ForecastSelectors.forecastStateIsEmpty);
 
   return (
     <>
       <Search />
       <Favorite />
-      <ForecastPreview error={error} />
-      {!error && <ForecastCards />}
+      <ForecastPreview error={error} forecastStateIsEmpty={forecastStateIsEmpty} />
+      {!error && !forecastStateIsEmpty && <ForecastCards />}
     </>
   );
 };

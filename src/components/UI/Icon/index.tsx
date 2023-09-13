@@ -13,7 +13,7 @@ const Icon: FC<Props> = ({ icon, extendedClass = '', clickHanlder }) => {
   };
 
   return (
-    <span className={`material-symbols-outlined ${extendedClass}`} onClick={hanldeClick}>
+    <span className={`material-symbols-outlined ${extendedClass}`} onClick={clickHanlder ? hanldeClick : null}>
       {icon}
     </span>
   );
