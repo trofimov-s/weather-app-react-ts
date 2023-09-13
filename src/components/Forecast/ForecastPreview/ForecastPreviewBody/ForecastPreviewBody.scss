@@ -1,0 +1,23 @@
+.forecast-main {
+  @apply flex gap-5 items-center flex-col md:flex-row;
+
+  .detail-block {
+    @apply flex flex-col items-center md:w-1/2;
+
+    &__temp {
+      @apply flex items-center gap-x-2;
+
+      .degrees {
+        @apply text-6xl;
+
+        .temp-units {
+          right: 7px;
+        }
+      }
+    }
+
+    &__main {
+      @apply text-gray-700;
+    }
+  }
+}

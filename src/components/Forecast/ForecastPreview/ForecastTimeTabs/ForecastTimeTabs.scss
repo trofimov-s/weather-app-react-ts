@@ -1,0 +1,5 @@
+.forecast-list {
+  @apply flex items-center;
+  @apply h-15;
+  @apply rounded-md border border-solid border-gray-300;
+}

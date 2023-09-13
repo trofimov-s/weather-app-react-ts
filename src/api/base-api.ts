@@ -14,6 +14,7 @@ export abstract class BaseApi {
   }
 
   protected errorHanlder(e: AxiosError | string): void {
+    // eslint-disable-next-line no-console
     console.warn(`Http error: ${e}`);
   }
 }

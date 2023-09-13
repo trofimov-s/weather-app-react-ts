@@ -1,5 +1,8 @@
 @import '@styles/variables';
 
 .main {
-  height: calc(100vh - ($header-height + $footer-height));
+  @apply py-8;
+  @apply flex flex-col gap-y-5;
+
+  min-height: calc(100vh - ($header-height + $footer-height));
 }

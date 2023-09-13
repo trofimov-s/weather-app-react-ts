@@ -1,0 +1,34 @@
+.forecast-preview__header {
+  @apply flex justify-between;
+
+  .title-block {
+    &__title {
+      @apply font-bold;
+    }
+
+    &__subtitle {
+      @apply text-sm text-gray-700 font-bold;
+    }
+  }
+
+  .action-block {
+    @apply flex items-center gap-x-4;
+
+    .star {
+      @apply cursor-pointer;
+    }
+
+    &__units {
+      @apply flex items-center gap-x-2;
+
+      span {
+        @apply text-xl leading-none;
+        @apply cursor-pointer;
+
+        &.unit-selected {
+          @apply text-red-500;
+        }
+      }
+    }
+  }
+}

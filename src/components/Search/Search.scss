@@ -1,0 +1,12 @@
+.search-wrapper {
+  @apply flex flex-col items-center;
+
+  .search-title {
+    @apply text-2xl;
+    @apply mb-4;
+  }
+
+  .search-form {
+    @apply w-full;
+  }
+}

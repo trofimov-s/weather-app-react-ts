@@ -1,10 +1,14 @@
 import { FC } from 'react';
 
-type Props = { icon: string; fontSize?: string };
+type Props = {
+  icon: string;
+  extendedClass?: string;
+  clickHanlder?: () => void;
+};
 
-const Icon: FC<Props> = ({ icon, fontSize = '24px' }) => {
+const Icon: FC<Props> = ({ icon, extendedClass = '', clickHanlder }) => {
   return (
-    <span style={{ fontSize }} className="material-symbols-outlined">
+    <span className={`material-symbols-outlined ${extendedClass}`} onClick={clickHanlder}>
       {icon}
     </span>
   );

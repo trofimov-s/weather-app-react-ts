@@ -7,9 +7,10 @@
 
   .social-link {
     @apply text-gray-700;
+    @apply underline;
 
     &:hover {
-      @apply underline;
+      @apply no-underline;
     }
   }
 }

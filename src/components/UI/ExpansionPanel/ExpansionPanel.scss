@@ -1,0 +1,39 @@
+.expansion-panel {
+  @apply bg-white rounded-md overflow-hidden;
+
+  &__header {
+    @apply flex justify-between px-4 py-3;
+    @apply cursor-pointer;
+
+    @apply transition-all duration-200 ease-linear;
+  }
+
+  &__title {
+    @apply text-xl font-bold;
+  }
+
+  &__content {
+    @apply max-h-0;
+    @apply px-4 py-0;
+    @apply transition-all duration-300 ease-linear;
+  }
+
+  &.active {
+    .caret {
+      @apply rotate-180;
+      @apply transition-transform duration-200 ease-linear;
+    }
+
+    .expansion-panel__content {
+      @apply max-h-250;
+      @apply transition-all duration-300 ease-linear;
+      @apply py-2;
+    }
+  }
+
+  &:not(.active) {
+    .expansion-panel__header:hover {
+      @apply bg-gray-100;
+    }
+  }
+}

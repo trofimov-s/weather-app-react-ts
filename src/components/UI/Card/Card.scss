@@ -1,0 +1,9 @@
+.card {
+  @apply bg-white;
+  @apply rounded-md;
+  @apply p-4;
+
+  &.selected {
+    @apply border border-solid border-gray-700;
+  }
+}

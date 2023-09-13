@@ -1,0 +1,58 @@
+.input-field {
+  @apply relative overflow-x-clip;
+  @apply w-full;
+
+  input {
+    @apply w-full;
+    @apply rounded-md border-2 border-solid border-gray-300 p-3 outline-none;
+    @apply text-lg text-gray-700;
+    @apply bg-transparent;
+
+    &:not(:placeholder-shown) {
+      @apply border-gray-700;
+    }
+
+    &:focus {
+      @apply border-gray-700;
+    }
+
+    &:focus ~ label,
+    &:valid ~ label {
+      @apply top-0 left-4;
+      @apply text-base text-gray-700;
+      @apply px-1;
+      @apply bg-gray-200;
+    }
+
+    &:focus ~ .icon-btn {
+      @apply right-3;
+    }
+
+    &:not(:focus):placeholder-shown ~ .icon-btn .input-icon {
+      @apply text-gray-300;
+    }
+  }
+
+  label {
+    @apply absolute top-1/2 left-4;
+    @apply text-lg text-gray-300;
+    @apply pointer-events-none;
+    @apply transition-all duration-150 ease-linear;
+
+    transform: translateY(-50%);
+  }
+
+  .icon-btn {
+    @apply inline-flex py-2;
+    @apply absolute -right-10 top-1/2;
+    @apply transition-all duration-150 ease-linear delay-100;
+    @apply cursor-default;
+
+    transform: translateY(-50%);
+
+    .input-icon {
+      @apply text-gray-700;
+      @apply transition-colors duration-100 ease-linear;
+    }
+  }
+}

@@ -1,0 +1,49 @@
+.favorite-city {
+  &__title {
+    @apply flex-1;
+    @apply text-lg font-bold;
+  }
+
+  &__info-block {
+    @apply flex items-center gap-x-4 font-bold;
+    @apply pr-2;
+
+    .min-max-block {
+      @apply flex flex-col gap-y-1 py-1;
+
+      &__container {
+        @apply flex items-center font-normal;
+
+        .arrow-icon {
+          @apply text-base;
+
+          &--up {
+            @apply text-red-500;
+          }
+
+          &--down {
+            @apply text-blue-500;
+          }
+        }
+
+        .degrees {
+          @apply text-base text-gray-700;
+        }
+      }
+    }
+
+    .degrees {
+      @apply text-lg;
+
+      .temp-units {
+        bottom: -5px;
+        right: 1px;
+      }
+    }
+  }
+}
+
+.favorite-star {
+  @apply inline-flex py-3 pl-3 pr-0.5;
+  @apply text-yellow-500;
+}

@@ -1,0 +1,4 @@
+.forecast-preview-card {
+  @apply md:w-4/5 md:mx-auto;
+  @apply flex flex-col gap-y-5;
+}

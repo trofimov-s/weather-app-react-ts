@@ -1,28 +1,32 @@
-import { FC, useContext } from 'react';
+import { FC, useEffect } from 'react';
+import './UserLocation.scss';
 
-import { UserLocationData } from '@models/user-location-data.interface';
-import { UserLocationContext } from '@store/user-location-context';
 import { Icon } from '@components/UI';
+import { useAppDispatch, useAppSelector } from '@store/index';
+import { getUserLocationAction } from '@store/userLocationActions';
+import { selectUserLocation } from '@store/userLocationSlice';
 
 const UserLocation: FC = () => {
-  const ctx: UserLocationData = useContext(UserLocationContext);
-  console.log(ctx);
+  const dispatch = useAppDispatch();
+  const userLocation = useAppSelector(selectUserLocation);
 
-  if (!ctx) {
+  useEffect(() => {
+    dispatch(getUserLocationAction());
+  }, [dispatch]);
+
+  if (!userLocation) {
     return;
   }
 
   return (
     <div>
-      <div className="flex">
-        <Icon fontSize="18px" icon="person_pin_circle" />
+      <div className="location-static">
+        <Icon extendedClass="location-icon" icon="person_pin_circle" />
         <span>Location:</span>
       </div>
-      <div className="flex items-center gap-x-2">
-        <span>
-          {ctx.city}, {ctx.country}
-        </span>
-        <img className="h-6" src={ctx.flag_svg} alt={'Flag of ' + ctx.country} />
+      <div className="location-dynamic">
+        <span>{userLocation.city_with_code}</span>
+        <img className="flag" src={userLocation.flag_svg} alt={'Flag of ' + userLocation.country} />
       </div>
     </div>
   );

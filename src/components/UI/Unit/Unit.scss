@@ -1,0 +1,11 @@
+.degrees {
+  @apply relative;
+
+  .temp-units {
+    @apply absolute;
+    @apply text-gray-700;
+
+    font-size: 0.375em;
+    bottom: 10%;
+  }
+}

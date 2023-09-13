@@ -1,0 +1,19 @@
+.forecast-list__item {
+  @apply flex-1 flex justify-center items-center h-full;
+  @apply text-center text-sm md:text-base;
+
+  @apply cursor-pointer;
+  @apply transition-colors duration-200 ease-linear;
+
+  &:not(.selected):hover {
+    @apply bg-gray-100;
+  }
+
+  &:not(:last-child) {
+    @apply border-r border-solid border-gray-300;
+  }
+
+  &.selected {
+    @apply bg-gray-300;
+  }
+}

@@ -7,6 +7,9 @@
       "@models/*": ["src/models/*"],
       "@store/*": ["src/store/*"],
       "@api/*": ["src/api/*"],
+      "@enums/*": ["src/enums/*"],
+      "@utils/*": ["src/utils/*"],
+      "@constants/*": ["src/constants/*"]
     }
   }
 }

@@ -1,0 +1,15 @@
+.location-static {
+  @apply flex;
+
+  .location-icon {
+    @apply text-lg;
+  }
+}
+
+.location-dynamic {
+  @apply flex items-center gap-x-2;
+
+  .flag {
+    @apply h-6;
+  }
+}
