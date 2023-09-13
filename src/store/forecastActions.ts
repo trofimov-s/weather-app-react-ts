@@ -20,7 +20,6 @@ const localStorageHelper = LocalStorageHelper;
 
 // INITIALIZE ACTION --- START
 const INIT = createAsyncThunk<void, string>('forecast/init', (userCity: string, { dispatch }) => {
-  console.log(userCity)
   // extract favorite cities from storage
   const favoriteCities = localStorageHelper.getItem(LocalStorageKeys.FAVORITE_CITIES);
   let cities = favoriteCities ? favoriteCities.split(',') : [];

@@ -31,7 +31,6 @@ const ForecastPreview: FC<Props> = ({ error, forecastStateIsEmpty }) => {
     return <h3 className="error-msg">{error}</h3>;
   }
 
-  console.log(forecastStateIsEmpty)
   if (forecastStateIsEmpty && !isLoading) {
     return <p className='fallback'>Welcome! Start to search city forecast!</p>
   }
