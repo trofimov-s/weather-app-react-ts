@@ -1,27 +1,27 @@
-# React + TypeScript + Vite
+# Weather App React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project was generated with [Vite](https://vitejs.dev/)
+## Techologies
+- TypeScript
+- React 18.2
+- Redux/Toolkit
+- Vite
+- Axios
+- EsLint
+- Prettier
+## Developed by
+[Serhii Trofimov GitHub Account](https://github.com/trofimov-s?tab=repositories)
+<br>
+[Second GitHub Account](https://github.com/sergei-trofimov?tab=repositories)
 
-Currently, two official plugins are available:
+## Api
+In the project I am using:
+ - [OpenWeather](https://openweathermap.org/) - weather forecast Api;
+ - [ipregistry](https://ipregistry.co/) - Api allows to track a user location;
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Preview
+You can visit a web site [Weather App](https://st-weather-app-react.surge.sh/)
 
-## Expanding the ESLint configuration
+## Development server
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+Run `npm run dev` for a dev server. Navigate to `http://localhost:5173/`. The application will automatically reload if you change any of the source files.

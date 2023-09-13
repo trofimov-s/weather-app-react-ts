@@ -8,7 +8,8 @@
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "format": "npx prettier 'src/**/*.{js,tsx,ts,css,scss}' --write"
+    "format": "npx prettier 'src/**/*.{js,tsx,ts,css,scss}' --write",
+    "deploy": "npm run build && surge --project ./dist --domain st-weather-app-react.surge.sh"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.5",
