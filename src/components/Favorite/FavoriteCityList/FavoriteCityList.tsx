@@ -1,8 +1,10 @@
 import { FC, useCallback } from 'react';
 import './FavoriteCityList.scss';
 import FavoriteCityListItem from '../FavoriteCityListItem/FavoriteCityListItem';
-import { useAppDispatch } from '@store/index';
+import { useAppDispatch, useAppSelector } from '@store/index';
 import { setSelectedCity } from '@store/forecastSlice';
+import { ForecastSelectors } from '@store/forecastSelectors';
+import { Loader } from '@components/UI';
 
 type Props = {
   favoriteCities: string[];
@@ -10,12 +12,17 @@ type Props = {
 
 const FavoriteCityList: FC<Props> = ({ favoriteCities }) => {
   const dispatch = useAppDispatch();
+  const isBatchLoading = useAppSelector(ForecastSelectors.selectBatchLoading);
   const selectCityHanlder = useCallback(
     (city: string): void => {
       dispatch(setSelectedCity(city));
     },
     [dispatch],
   );
+
+  if (isBatchLoading) {
+    return <Loader />;
+  }
 
   return (
     <ul className="favorite-list">

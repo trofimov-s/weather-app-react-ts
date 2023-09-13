@@ -6,7 +6,8 @@ import { UNITS } from '@enums/units.enum';
 export interface ForecastState {
   forecast: CitiesForecastDictionary;
   isLoading: boolean;
-  isError: string;
+  isLoadingBatchUpdating: boolean;
+  error: string;
   currentUnit: UNITS;
   favoriteCities: string[];
   selectedCity: string;
@@ -15,8 +16,9 @@ export interface ForecastState {
 
 const initialState: ForecastState = {
   forecast: {},
-  isLoading: false,
-  isError: null,
+  isLoading: true,
+  isLoadingBatchUpdating: false,
+  error: null,
   currentUnit: null,
   favoriteCities: [],
   selectedCity: null,
@@ -35,9 +37,25 @@ const forecastSlice = createSlice({
     },
     setSelectedCity(state, action: PayloadAction<string>) {
       state.selectedCity = action.payload;
+      state.error = null;
     },
     setSelectedDay(state, action: PayloadAction<string>) {
       state.selectedDate = action.payload;
+    },
+    showLoading(state) {
+      state.isLoading = true;
+    },
+    hideLoading(state) {
+      state.isLoading = false;
+    },
+    showIsLoadingBatchUpdating(state) {
+      state.isLoadingBatchUpdating = true;
+    },
+    hideIsLoadingBatchUpdating(state) {
+      state.isLoadingBatchUpdating = false;
+    },
+    skipError(state) {
+      state.error = null;
     },
   },
   extraReducers(builder) {
@@ -50,8 +68,17 @@ const forecastSlice = createSlice({
       } else {
         state.forecast = { ...state.forecast, ...payload };
       }
+
       state.selectedDate = payload[city][unit].forecastDates[0];
+      state.isLoading = false;
     });
+    builder.addCase(
+      ForecastActions.getCityForecast.rejected,
+      (state, action: PayloadAction<string>) => {
+        state.error = action.payload;
+        state.isLoading = false;
+      },
+    );
     builder.addCase(ForecastActions.toggleFavorite.fulfilled, (state, action) => {
       state.favoriteCities = action.payload;
     });
@@ -77,11 +104,21 @@ const forecastSlice = createSlice({
       );
 
       state.forecast = { ...state.forecast, ...forecastsDic };
+      state.isLoadingBatchUpdating = false;
     });
   },
 });
 
-export const { setFavoriteCities, setUnits, setSelectedCity, setSelectedDay } =
-  forecastSlice.actions;
+export const {
+  setFavoriteCities,
+  setUnits,
+  setSelectedCity,
+  setSelectedDay,
+  showLoading,
+  hideLoading,
+  showIsLoadingBatchUpdating,
+  hideIsLoadingBatchUpdating,
+  skipError,
+} = forecastSlice.actions;
 
 export default forecastSlice;

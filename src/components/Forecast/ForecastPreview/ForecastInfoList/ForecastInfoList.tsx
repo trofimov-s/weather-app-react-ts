@@ -1,4 +1,4 @@
-import Unit from '@components/UI/Unit';
+import { Unit } from '@components/UI';
 import { FC } from 'react';
 import './ForecastInfoList.scss';
 import { Weather } from '@models/weather.interface';

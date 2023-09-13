@@ -1,4 +1,14 @@
 .forecast-preview-card {
   @apply md:w-4/5 md:mx-auto;
   @apply flex flex-col gap-y-5;
+
+  .lds-spinner {
+    @apply mx-auto my-20;
+  }
+}
+
+.error-msg {
+  @apply flex justify-center items-center;
+  @apply h-20;
+  @apply text-2xl font-bold;
 }

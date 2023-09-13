@@ -38,8 +38,13 @@ const extractForecast = createSelector(
 
 const selectForecastDay = createSelector(
   [extractForecast, selectSelectedDate],
-  (forecastData: ForecastData, selectedDate: string): Weather[] => forecastData.list[selectedDate],
+  (forecastData: ForecastData, selectedDate: string): Weather[] => forecastData?.list[selectedDate],
 );
+
+const selectLoading = (state: RootState): boolean =>
+  state.forecast.isLoading || state.forecast.isLoadingBatchUpdating;
+const selectBatchLoading = (state: RootState): boolean => state.forecast.isLoadingBatchUpdating;
+const selectError = (state: RootState): string => state.forecast.error;
 
 export const ForecastSelectors = {
   selectCurrentUnit,
@@ -48,4 +53,7 @@ export const ForecastSelectors = {
   selectFavoriteCities,
   selectFavoriteCityForecast,
   extractForecast,
+  selectLoading,
+  selectError,
+  selectBatchLoading,
 };

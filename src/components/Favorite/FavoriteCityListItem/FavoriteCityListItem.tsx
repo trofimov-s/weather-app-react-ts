@@ -1,21 +1,27 @@
 import { FC } from 'react';
 import './FavoriteCityListItem.scss';
-import { RootState, useAppSelector } from '@store/index';
+import { RootState, useAppDispatch, useAppSelector } from '@store/index';
 import { ForecastSelectors } from '@store/forecastSelectors';
-import Unit from '@components/UI/Unit';
+import { Unit } from '@components/UI';
 import { UNITS_MAP } from '@constants/units-map.constant';
 import { Icon } from '@components/UI';
+import { ForecastActions } from '@store/forecastActions';
 
 type Props = {
   city: string;
 };
 
 const FavoriteCityListItem: FC<Props> = ({ city }) => {
+  const dispatch = useAppDispatch();
   const [fullCityName, { temp, temp_min, temp_max, icon }, unit] = useAppSelector(
     (state: RootState) => ForecastSelectors.selectFavoriteCityForecast(state, city),
   );
 
   const currentUnit = UNITS_MAP[unit];
+
+  const handleIconClick = () => {
+    dispatch(ForecastActions.toggleFavorite(city));
+  };
 
   return (
     <>
@@ -34,9 +40,7 @@ const FavoriteCityListItem: FC<Props> = ({ city }) => {
           </div>
         </div>
       </div>
-      {/* <div> */}
-      <Icon icon="star" extendedClass="favorite-star" />
-      {/* </div> */}
+      <Icon icon="star" extendedClass="favorite-star" clickHanlder={handleIconClick} />
     </>
   );
 };

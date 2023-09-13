@@ -1,5 +1,6 @@
 .favorite-list {
   @apply flex flex-col gap-y-3;
+  @apply w-full;
 
   &__item {
     @apply flex justify-between items-center;
@@ -9,4 +10,8 @@
     @apply hover:bg-gray-200 cursor-pointer;
     @apply transition-colors duration-200 ease-linear;
   }
+}
+
+.lds-spinner {
+  @apply mx-auto my-10;
 }

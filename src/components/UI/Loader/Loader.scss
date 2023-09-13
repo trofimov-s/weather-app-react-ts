@@ -1,0 +1,36 @@
+@import '@styles/variables';
+
+.lds-spinner {
+  @apply inline-block relative;
+  @apply w-20 h-20;
+}
+.lds-spinner div {
+  transform-origin: 40px 40px;
+  animation: lds-spinner 1.2s linear infinite;
+}
+.lds-spinner div:after {
+  content: ' ';
+  @apply block absolute;
+  @apply w-1.5 h-4.5;
+  @apply bg-gray-300;
+  top: 3px;
+  left: 37px;
+  border-radius: 20%;
+}
+
+$degrees-step: 30;
+$total-count: 12;
+@for $i from 1 through $total-count {
+  .lds-spinner div:nth-child(#{$i}) {
+    transform: rotate(#{$degrees-step * ($i - 1)}deg);
+    animation-delay: #{($total-count - $i) * (-0.1)}s;
+  }
+}
+@keyframes lds-spinner {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}

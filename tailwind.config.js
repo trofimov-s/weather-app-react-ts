@@ -14,6 +14,7 @@ export default {
         },
       },
       spacing: {
+        4.5: '1.125rem', // 18px
         15: '3.75rem', // 60px
         17.5: '4.375rem', // 70px
         250: '62.5rem', // 1000px

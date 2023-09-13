@@ -8,25 +8,20 @@ import { useAppDispatch, useAppSelector } from '@store/index';
 import { ForecastActions } from '@store/forecastActions';
 import { ForecastSelectors } from '@store/forecastSelectors';
 
-type Props = {
-  currentUnit: UNITS;
-  city: string;
-  country: string;
-};
-
 function isFavorite(cities: string[], city: string): boolean {
   return cities.includes(city.toLowerCase());
 }
 
-const ForecastPreviewHeader: FC<Props> = ({ city, country }) => {
+const ForecastPreviewHeader: FC = () => {
   const dispatch = useAppDispatch();
+  const forecast = useAppSelector(ForecastSelectors.extractForecast);
   const currentUnit = useAppSelector(ForecastSelectors.selectCurrentUnit);
   const favoriteCities = useAppSelector(ForecastSelectors.selectFavoriteCities);
   const units = useMemo(() => Object.entries(UNITS_MAP) as [UNITS, string][], []);
 
   const toggleFavorite = useCallback(() => {
-    dispatch(ForecastActions.toggleFavorite(city));
-  }, [dispatch, city]);
+    dispatch(ForecastActions.toggleFavorite(forecast.city));
+  }, [dispatch, forecast.city]);
 
   const changeUnitHanlder = useCallback(
     (unit: UNITS) => {
@@ -41,12 +36,14 @@ const ForecastPreviewHeader: FC<Props> = ({ city, country }) => {
     <header className="forecast-preview__header">
       <div className="title-block">
         <p className="title-block__title">CURRENT WEATHER</p>
-        <p className="title-block__subtitle">{`${city}, ${country}`}</p>
+        <p className="title-block__subtitle">{`${forecast.city}, ${forecast.country}`}</p>
       </div>
       <div className="action-block">
         <Icon
           icon="star"
-          extendedClass={`star ${isFavorite(favoriteCities, city) ? 'text-yellow-500' : ''}`}
+          extendedClass={`star ${
+            isFavorite(favoriteCities, forecast.city) ? 'text-yellow-500' : ''
+          }`}
           clickHanlder={toggleFavorite}
         />
         <div className="action-block__units">

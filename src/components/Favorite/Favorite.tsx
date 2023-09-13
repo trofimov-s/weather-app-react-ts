@@ -13,7 +13,7 @@ const Favorite: FC = () => {
       {favoriteCities.length ? (
         <FavoriteCityList favoriteCities={favoriteCities} />
       ) : (
-        <p className="fallback">Not city found</p>
+        <p className="fallback">Please, add some cities to favorite</p>
       )}
     </ExpansionPanel>
   );

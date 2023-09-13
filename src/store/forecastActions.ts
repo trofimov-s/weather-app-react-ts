@@ -3,7 +3,14 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { CitiesForecastDictionary } from '@models/weather.interface';
 import LocalStorageHelper from '@utils/local-storage-helper';
 import { LocalStorageKeys } from '@enums/local-storage-keys.enum';
-import { setFavoriteCities, setSelectedCity, setUnits } from './forecastSlice';
+import {
+  setFavoriteCities,
+  setSelectedCity,
+  setUnits,
+  showIsLoadingBatchUpdating,
+  showLoading,
+  skipError,
+} from './forecastSlice';
 import { UNITS } from '@enums/units.enum';
 import { RootState } from '.';
 
@@ -73,21 +80,31 @@ const ChangeUnit = createAsyncThunk<UNITS, UNITS>(
 // UNIT CHANGE HANDLING --- END
 
 // FETCH FORECAST ACTIONS --- START
-const GetCityForecast = createAsyncThunk<CitiesForecastDictionary, { city: string; unit?: UNITS }>(
-  'forecast/getCityForecast',
-  async ({ city, unit }, { dispatch, getState }) => {
-    const currentUnit = (getState() as RootState).forecast.currentUnit;
-    const forecast = await weatherApi.getCityForecast(city, unit || currentUnit);
+const GetCityForecast = createAsyncThunk<
+  CitiesForecastDictionary,
+  { city: string; unit?: UNITS },
+  { rejectValue: string }
+>('forecast/getCityForecast', async ({ city, unit }, { dispatch, getState, rejectWithValue }) => {
+  dispatch(showLoading());
+  dispatch(skipError());
 
+  const currentUnit = (getState() as RootState).forecast.currentUnit;
+
+  try {
+    const forecast = await weatherApi.getCityForecast(city, unit || currentUnit);
     dispatch(setSelectedCity(Object.keys(forecast)[0]));
     return forecast;
-  },
-);
+  } catch (error) {
+    return rejectWithValue('Sorry, city not found.');
+  }
+});
 
 const GetBacthCitiesForecast = createAsyncThunk<
   CitiesForecastDictionary[],
   { cities: string[]; unit: UNITS }
->('forecast/getBacthCitiesForecast', async ({ cities, unit }) => {
+>('forecast/getBacthCitiesForecast', async ({ cities, unit }, { dispatch }) => {
+  dispatch(showIsLoadingBatchUpdating());
+
   const requests: Promise<CitiesForecastDictionary>[] = cities.map((city) =>
     weatherApi.getCityForecast(city, unit),
   );

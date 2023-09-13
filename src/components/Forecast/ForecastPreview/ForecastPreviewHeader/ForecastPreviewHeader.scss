@@ -28,6 +28,11 @@
         &.unit-selected {
           @apply text-red-500;
         }
+
+        &:not(.unit-selected) {
+          @apply hover:text-red-300;
+          @apply transition-colors duration-200 ease-linear;
+        }
       }
     }
   }

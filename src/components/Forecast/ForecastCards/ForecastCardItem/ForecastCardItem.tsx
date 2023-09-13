@@ -1,11 +1,10 @@
 import { Weather } from '@models/weather.interface';
 import { FC } from 'react';
 import './ForecastCardItem.scss';
-import Card from '@components/UI/Card';
-import Unit from '@components/UI/Unit';
 import { UNITS } from '@enums/units.enum';
 import { UNITS_MAP } from '@constants/units-map.constant';
 import { matToDailyForecast } from '@utils/mat-to-daily-forecast.function';
+import { Card, Unit } from '@components/UI';
 
 type Props = {
   dayForecast: Weather[];
